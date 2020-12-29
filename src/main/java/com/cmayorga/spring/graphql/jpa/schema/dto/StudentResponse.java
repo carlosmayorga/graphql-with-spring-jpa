@@ -1,10 +1,8 @@
 package com.cmayorga.spring.graphql.jpa.schema.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cmayorga.spring.graphql.jpa.dao.entity.Student;
-import com.cmayorga.spring.graphql.jpa.dao.entity.Subject;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,22 +12,19 @@ import lombok.Setter;
 public class StudentResponse {
 
 	public StudentResponse(Student student) {
+		
 		this.id = student.getId();
 		this.firstName = student.getFirstName();
 		this.lastName = student.getLastName();
 		this.email = student.getEmail();
-		
 		this.street = student.getAddress().getStreet();
 		this.city = student.getAddress().getCity();
 		
-		if (student.getLearningSubjects() != null) {
-			learningSubjects = new ArrayList<SubjectResponse>();
-			for (Subject subject: student.getLearningSubjects()) {
-				learningSubjects.add(new SubjectResponse(subject));
-			}
-		}
+		// this is for internal handle. Don't put into schema
+		this.student = student;
 	}
 
+	
 	private long id;
 
 	private String firstName;
@@ -44,4 +39,6 @@ public class StudentResponse {
 	
 	private List<SubjectResponse> learningSubjects;
 	
+	// this is for internal handle. Don't put into schema
+	private Student student;
 }
