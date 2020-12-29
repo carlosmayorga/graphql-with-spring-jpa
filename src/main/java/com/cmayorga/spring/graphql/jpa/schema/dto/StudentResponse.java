@@ -41,4 +41,9 @@ public class StudentResponse {
 	
 	// this is for internal handle. Don't put into schema
 	private Student student;
+	
+	/* This is for show how resolver works internally
+	 * and probe that we can use resolver to some business logic
+	 */
+	private String fullName;
 }

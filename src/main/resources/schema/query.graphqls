@@ -12,6 +12,8 @@ type StudentResponse {
     street : String
     city : String
     learningSubjects: [SubjectResponse]
+    
+    fullName: String
 }
 
 type SubjectResponse {

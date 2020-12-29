@@ -23,5 +23,14 @@ public class StudentResponseResolver implements GraphQLResolver<StudentResponse>
 		}
 		return learningSubjects;
 	}
+	
+	
+	/* This is for show how resolver works internally
+	 * and probe that we can use resolver to some business logic
+	 */
+	public String getFullName (StudentResponse studentResponse) {
+		
+		return studentResponse.getFirstName() +' '+ studentResponse.getLastName();
+	}
 
 }
