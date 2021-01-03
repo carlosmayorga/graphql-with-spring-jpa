@@ -1,0 +1,48 @@
+# Altair GraphQL Client.
+
+# To search Student
+query{
+  student(id: 2){
+    fullName,
+    street,
+    city,
+    learningSubjects(learningSubjectsFilter:ALL){
+      subjectName
+    }
+  }
+}
+
+# To create a new Student
+mutation {
+    createStudent(createStudentRequest: {
+        firstName: "Tim"
+        lastName: "Cook"
+        email: "tim@gmail.com"
+        street: "Street 10"
+        city: "Panamá"
+
+        learningSubjects: [{
+                subjectName: "Java 12",
+                marksObtained: 95.00
+            },
+            {
+                subjectName: "Angular 9"
+                marksObtained: 87.00
+            }
+        ]
+    }) {
+        id
+        firstName
+        lastName
+        email
+        street
+        city
+        learningSubjects(learningSubjectsFilter: ALL) {
+            id
+            subjectName
+            marksObtained
+        }
+        fullName
+    }
+
+}

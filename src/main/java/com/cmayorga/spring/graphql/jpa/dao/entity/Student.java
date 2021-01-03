@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.cmayorga.spring.graphql.jpa.schema.dto.CreateStudentRequest;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,4 +46,12 @@ public class Student {
 
 	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
 	private List<Subject> learningSubjects;
+	
+	
+	// This public constructor is for create new student by Mutation
+	public Student (CreateStudentRequest createStudentRequest) {
+		this.firstName = createStudentRequest.getFirstName();
+		this.lastName = createStudentRequest.getLastName();
+		this.email = createStudentRequest.getEmail();
+	}
 }
